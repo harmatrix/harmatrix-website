@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harmatrix — Software Studio · Montevideo, Uruguay</title>
+<meta name="description" content="Harmatrix S.A.S. is an independent software studio in Montevideo, Uruguay. We design and build custom software: mobile applications, AI &amp; data engineering, and cloud backends.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A1713'/%3E%3Cpath d='M8 24V8h3.2v6.2h9.6V8H24v16h-3.2v-6.6h-9.6V24z' fill='%23F7F3EC'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F3EC;
+  --paper-deep:#EFE9DE;
+  --ink:#1A1713;
+  --ink-soft:#4A443C;
+  --rule:#D8D0C2;
+  --accent:#0E5A54;
+  --accent-warm:#C3541F;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size:100% 128px, 128px 100%;
+  background-position:0 -1px, -1px 0;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- header ---------- */
+header{
+  border-bottom:1px solid var(--ink);
+  background:var(--paper);
+  position:sticky;top:0;z-index:10;
+}
+.header-in{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 0;
+}
+.wordmark{
+  font-family:var(--mono);font-weight:700;font-size:15px;
+  letter-spacing:.32em;text-decoration:none;color:var(--ink);
+}
+.wordmark span{color:var(--accent-warm)}
+nav a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;margin-left:28px;
+}
+nav a:hover{color:var(--accent-warm)}
+
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--ink);
+  background:var(--paper);
+  overflow:hidden;
+}
+.hero-in{
+  padding:96px 0 88px;
+  position:relative;
+}
+.kicker{
+  color:var(--accent);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+  animation:rise .7s .05s both;
+}
+.kicker::before{content:"";width:44px;height:1px;background:var(--accent)}
+h1{
+  font-size:clamp(42px,7.2vw,84px);
+  font-weight:600;
+  line-height:1.02;
+  letter-spacing:-.015em;
+  max-width:13ch;
+  animation:rise .7s .15s both;
+}
+h1 em{
+  font-style:italic;font-weight:500;color:var(--accent);
+}
+.hero p{
+  margin-top:32px;max-width:52ch;font-size:19px;color:var(--ink-soft);
+  animation:rise .7s .3s both;
+}
+.hero-cta{
+  margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;
+  animation:rise .7s .45s both;
+}
+.btn{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;padding:14px 22px;border:1px solid var(--ink);
+  color:var(--ink);transition:all .18s ease;
+}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent-warm);border-color:var(--accent-warm)}
+.btn:not(.solid):hover{border-color:var(--accent-warm);color:var(--accent-warm)}
+.hero-matrix{
+  position:absolute;right:-10px;top:70px;
+  font-family:var(--mono);font-size:13px;line-height:2.1;
+  color:var(--ink);opacity:.16;white-space:pre;
+  user-select:none;pointer-events:none;
+  animation:fade 1.2s .5s both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:.16}}
+
+/* ---------- section scaffolding ---------- */
+section{border-bottom:1px solid var(--ink)}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:26px 0 0;
+}
+.sec-head .mono{color:var(--accent-warm)}
+h2{
+  font-size:clamp(30px,4vw,44px);font-weight:600;letter-spacing:-.01em;
+  padding:10px 0 42px;
+}
+
+/* ---------- services ---------- */
+.svc-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--ink);
+}
+.svc{
+  padding:36px 34px 42px;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  transition:background .2s ease;
+}
+.svc:nth-child(odd){border-right:1px solid var(--rule)}
+.svc:hover{background:var(--paper-deep)}
+.svc .num{
+  font-family:var(--mono);font-size:12px;color:var(--accent-warm);letter-spacing:.14em;
+}
+.svc h3{
+  font-size:24px;font-weight:600;margin:14px 0 12px;letter-spacing:-.01em;
+}
+.svc p{color:var(--ink-soft);font-size:16px;max-width:44ch}
+.svc ul{
+  margin-top:18px;list-style:none;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.svc li{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  border:1px solid var(--rule);padding:5px 10px;color:var(--ink-soft);
+  background:var(--paper);
+}
+.svc-pad{padding-bottom:0}
+
+/* ---------- approach strip ---------- */
+.strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--ink);
+}
+.strip div{
+  padding:30px 34px 36px;border-right:1px solid var(--rule);
+}
+.strip div:last-child{border-right:none}
+.strip .mono{color:var(--accent);display:block;margin-bottom:10px}
+.strip p{font-size:15.5px;color:var(--ink-soft)}
+
+/* ---------- about ---------- */
+.about-grid{
+  display:grid;grid-template-columns:1.4fr 1fr;gap:60px;
+  padding-bottom:64px;
+}
+.about-grid .lede{font-size:22px;line-height:1.55}
+.about-grid .lede em{color:var(--accent);font-style:italic}
+.about-grid .body{margin-top:24px;color:var(--ink-soft)}
+.facts{border-left:1px solid var(--ink);padding-left:36px;align-self:start}
+.fact{padding:14px 0;border-bottom:1px solid var(--rule)}
+.fact:last-child{border-bottom:none}
+.fact .mono{color:var(--ink-soft);display:block;margin-bottom:4px}
+.fact strong{font-size:18px;font-weight:600}
+
+/* ---------- contact ---------- */
+.contact{background:var(--ink);color:var(--paper);border-bottom:none}
+.contact .sec-head .mono{color:var(--accent-warm)}
+.contact h2{color:var(--paper)}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(247,243,236,.25);
+  margin-bottom:72px;
+}
+.contact-grid a,.contact-grid address{
+  display:block;padding:30px 30px 36px;text-decoration:none;
+  color:var(--paper);font-style:normal;
+  border-right:1px solid rgba(247,243,236,.18);
+  transition:background .2s ease;
+}
+.contact-grid>*:last-child{border-right:none}
+.contact-grid a:hover{background:rgba(247,243,236,.07)}
+.contact-grid .mono{color:#B8AE9C;display:block;margin-bottom:12px}
+.contact-grid .val{font-size:19px;font-weight:500;letter-spacing:-.01em}
+.contact-note{
+  padding:0 0 80px;color:#B8AE9C;font-size:15.5px;max-width:60ch;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#B8AE9C;border-top:1px solid rgba(247,243,236,.18)}
+.foot-in{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:26px 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:820px){
+  .hero-matrix{display:none}
+  .svc-grid{grid-template-columns:1fr}
+  .svc:nth-child(odd){border-right:none}
+  .strip{grid-template-columns:1fr}
+  .strip div{border-right:none;border-bottom:1px solid var(--rule)}
+  .strip div:last-child{border-bottom:none}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .facts{border-left:none;padding-left:0;border-top:1px solid var(--ink);padding-top:10px}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-grid a,.contact-grid address{border-right:none;border-bottom:1px solid rgba(247,243,236,.18)}
+  nav a{margin-left:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-in">
+    <a class="wordmark" href="#top">HARMATRIX<span>.</span></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="kicker mono">Software Studio — Montevideo, Uruguay</div>
+    <h1>Software, engineered <em>end to end.</em></h1>
+    <p>Harmatrix is an independent software studio. We design, build, and run
+    custom products for companies in Uruguay and abroad — from mobile
+    applications to AI&#8209;powered data platforms — with senior engineering
+    on every line of code.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="mailto:dev@harmatrix.net">Start a conversation</a>
+      <a class="btn" href="#services">What we do</a>
+    </div>
+    <div class="hero-matrix" aria-hidden="true">┌───────────────┐
+│ h · m · x     │
+│ · build ·     │
+│ ship · run    │
+│ · · · · ·     │
+└───────────────┘</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">01 — Services</span>
+      <span class="mono" style="color:var(--ink-soft)">Design → Build → Operate</span>
+    </div>
+    <h2>What we build</h2>
+  </div>
+  <div class="wrap svc-pad">
+    <div class="svc-grid">
+      <div class="svc">
+        <span class="num">/ 01</span>
+        <h3>Custom Software Development</h3>
+        <p>Full products from first sketch to production: web platforms,
+        internal tools, APIs, and the integrations that tie a business
+        together. We own scope, quality, and delivery.</p>
+        <ul><li>React</li><li>TypeScript</li><li>Python</li><li>Go</li><li>PostgreSQL</li></ul>
+      </div>
+      <div class="svc">
+        <span class="num">/ 02</span>
+        <h3>Mobile Applications</h3>
+        <p>iOS and Android apps with native-grade quality — built,
+        signed, and shipped to the App Store and Google Play, with
+        over-the-air updates and release engineering handled for you.</p>
+        <ul><li>React Native</li><li>Expo</li><li>Swift interop</li><li>App Store delivery</li></ul>
+      </div>
+      <div class="svc">
+        <span class="num">/ 03</span>
+        <h3>AI &amp; Data Engineering</h3>
+        <p>LLM-powered features that survive contact with production:
+        retrieval pipelines, agents, evaluation harnesses, embeddings,
+        and the data engineering underneath them.</p>
+        <ul><li>LLM apps</li><li>RAG</li><li>Vector search</li><li>Evals</li><li>Data pipelines</li></ul>
+      </div>
+      <div class="svc">
+        <span class="num">/ 04</span>
+        <h3>Cloud &amp; Backend</h3>
+        <p>Resilient services on AWS: containers and serverless,
+        infrastructure as code, encryption, observability, and the
+        operational discipline to keep systems healthy at 3 a.m.</p>
+        <ul><li>AWS</li><li>ECS / Lambda</li><li>CDK</li><li>CI/CD</li><li>Observability</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">02 — How we work</span>
+    </div>
+    <h2>Small by design</h2>
+    <div class="strip">
+      <div>
+        <span class="mono">Senior only</span>
+        <p>No hand-offs to junior teams. The engineer you talk to is the
+        engineer who writes, reviews, and ships the code.</p>
+      </div>
+      <div>
+        <span class="mono">Production first</span>
+        <p>Working software over slideware: short cycles, weekly demos,
+        and code that goes to real users early and often.</p>
+      </div>
+      <div>
+        <span class="mono">Direct &amp; bilingual</span>
+        <p>Straight answers in English or Spanish, honest estimates,
+        and one accountable partner from kickoff to launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">03 — About</span>
+    </div>
+    <h2>An independent studio in Montevideo</h2>
+    <div class="about-grid">
+      <div>
+        <p class="lede">Harmatrix was founded in Montevideo in 2025 to do one
+        thing well: <em>build software that lasts</em>, for clients who care
+        about craft.</p>
+        <p class="body">Led by its founding engineer — with two decades across
+        data engineering, machine learning, and product development —
+        Harmatrix works as a hands-on partner to startups and established
+        companies alike, serving clients in Uruguay and exporting software
+        services across the Americas. We keep the team deliberately small,
+        the standards high, and the communication direct.</p>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <span class="mono">Founded</span>
+          <strong>2025</strong>
+        </div>
+        <div class="fact">
+          <span class="mono">Based in</span>
+          <strong>Montevideo, Uruguay</strong>
+        </div>
+        <div class="fact">
+          <span class="mono">Working across</span>
+          <strong>The Americas</strong>
+        </div>
+        <div class="fact">
+          <span class="mono">Languages</span>
+          <strong>English · Español</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">04 — Contact</span>
+    </div>
+    <h2>Tell us what you're building</h2>
+    <div class="contact-grid">
+      <a href="mailto:dev@harmatrix.net">
+        <span class="mono">Email</span>
+        <span class="val">dev@harmatrix.net</span>
+      </a>
+      <a href="tel:+59894416569">
+        <span class="mono">Phone</span>
+        <span class="val">+598 94 416 569</span>
+      </a>
+      <address>
+        <span class="mono">Studio</span>
+        <span class="val">Martín Pescador 3097<br>Montevideo, Uruguay</span>
+      </address>
+    </div>
+    <p class="contact-note">We typically reply within one business day.
+    Remote-friendly across time zones; GMT&#8211;3 at home.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>HARMATRIX S.A.S. — Montevideo, Uruguay</span>
+    <span>© 2026 Harmatrix. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
